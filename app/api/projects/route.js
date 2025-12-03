@@ -25,9 +25,9 @@ export async function POST(request) {
     const { title, description, projectUrl, githubUrl, technologies, imageUrl } = body;
 
     // Validate required fields
-    if (!title || !description || !Array.isArray(technologies) || technologies.length === 0) {
+    if (!title || !description || !Array.isArray(technologies) || technologies.length === 0 || technologies.some(t => typeof t !== 'string' || t.trim() === '')) {
       return NextResponse.json(
-        { error: 'Title, description, technologies ' },
+        { error: 'Title, description, and non-empty technologies (no empty strings) are required' },
         { status: 400 }
       );
     }

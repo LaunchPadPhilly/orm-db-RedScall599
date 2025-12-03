@@ -291,6 +291,7 @@ describe('Database Schema and Operations', () => {
           data: {
             title: "Missing technologies",
             description: "This project has no tech stack"
+            
           }
         })
       ).rejects.toThrow();
