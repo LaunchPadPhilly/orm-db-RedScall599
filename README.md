@@ -1,5 +1,5 @@
 # 🎨 Week 1: Next.js Portfolio Project
-
+hiiiiiiii
 ## 📚 Learning Objectives
 
 By completing this project, you will demonstrate:
