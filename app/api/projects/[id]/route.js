@@ -49,6 +49,11 @@ export async function PUT(request, { params }) {
     const body = await request.json();
     const { title, description, imageUrl, projectUrl, githubUrl, technologies } = body;
     // Validate required fields for update (technologies must be non-empty array)
+    // Check if project exists first
+    const existingProject = await prisma.project.findUnique({ where: { id: id } });
+    if (!existingProject) {
+      return NextResponse.json({ error: 'Project not found' }, { status: 404 });
+    }
     if (!title || !description || !Array.isArray(technologies) || technologies.length === 0) {
       return NextResponse.json(
         { error: 'Title, description, and non-empty technologies are required' },
@@ -95,7 +100,7 @@ export async function DELETE(request, { params }) {
     if (isNaN(id)) {
       return NextResponse.json(
         { error: 'Invalid project ID' },
-        { status: 400 }
+        { status: 404 }
       );
     }
 

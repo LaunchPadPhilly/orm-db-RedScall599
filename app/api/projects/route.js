@@ -27,7 +27,7 @@ export async function POST(request) {
     // Validate required fields
     if (!title || !description || !Array.isArray(technologies) || technologies.length === 0) {
       return NextResponse.json(
-        { error: 'Title, description, and non-empty technologies are required' },
+        { error: 'Title, description, technologies ' },
         { status: 400 }
       );
     }
