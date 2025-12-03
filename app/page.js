@@ -5,18 +5,17 @@ export default function Home() {
         <h1 className="text-6xl font-bold mb-6 text-gray-900">
           Welcome to My Portfolio
         </h1>
-        
-        <p className="text-xl text-gray-600 mb-8">
-          This is your homepage starter template. Customize this page to introduce yourself!
-        </p>
+         <h1 className="text-6xl font-bold mb-6">
+     Hi, I'm Jose!
+   </h1>
 
         <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-left">
           <h2 className="text-2xl font-bold mb-4 text-blue-900">
-            📝 TODO: Customize Your Homepage
+            Short explaining about me
           </h2>
           <ul className="space-y-2 text-blue-800">
-            <li>✏️ Change the heading to include your name</li>
-            <li>✏️ Write a brief introduction about yourself</li>
+            
+            <li>I love building computers,Baking, and creating sites</li>
             <li>✏️ Add navigation links to your other pages</li>
             <li>✏️ Choose your own color scheme</li>
             <li>✏️ Make it responsive for mobile devices</li>

@@ -6,9 +6,9 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Name */}
-          <Link href="/" className="text-2xl font-bold hover:text-blue-400">
+          {/* <Link href="/" className="text-2xl font-bold hover:text-blue-400">
             Your Name
-          </Link>
+          </Link> */}
           
           {/* Navigation links */}
           <div className="flex gap-6">

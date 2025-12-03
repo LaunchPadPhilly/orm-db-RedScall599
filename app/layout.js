@@ -1,4 +1,6 @@
 import './globals.css'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 export const metadata = {
   title: 'My Portfolio',
@@ -10,11 +12,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-gray-50">
         {/* TODO: Import and add your Navbar component here */}
-        
+        <Navbar/>
         <main className="flex-grow">
           {children}
         </main>
-        
+        <Footer/>
         {/* TODO: Import and add your Footer component here */}
       </body>
     </html>

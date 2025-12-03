@@ -7,7 +7,6 @@ export async function GET(request, { params }) {
   try {
     const id = parseInt(params.id);
     
-    // Validate that id is a number
     if (isNaN(id)) {
       return NextResponse.json(
         { error: 'Invalid project ID' },
@@ -15,27 +14,18 @@ export async function GET(request, { params }) {
       );
     }
 
-    // TODO: Implement GET request to return a specific project
-    // Instructions for students:
-    // 1. Use prisma.project.findUnique() to get the project by id
-    // 2. Return 404 if project is not found
-    // 3. Return the project as JSON if found
-    
-    // Example implementation (students should write this):
-    // const project = await prisma.project.findUnique({
-    //   where: { id: id }
-    // });
-    //
-    // if (!project) {
-    //   return NextResponse.json(
-    //     { error: 'Project not found' },
-    //     { status: 404 }
-    //   );
-    // }
-    //
-    // return NextResponse.json(project);
+    const project = await prisma.project.findUnique({
+      where: { id: id }
+    });
 
-    return NextResponse.json({ message: `TODO: Implement GET /api/projects/${id}` }, { status: 501 });
+    if (!project) {
+      return NextResponse.json(
+        { error: 'Project not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(project);
   } catch (error) {
     console.error('Error fetching project:', error);
     return NextResponse.json(
@@ -102,20 +92,20 @@ export async function DELETE(request, { params }) {
       );
     }
 
-    // TODO: Implement DELETE request to delete a specific project
-    // Instructions for students:
-    // 1. Use prisma.project.delete() to delete the project
-    // 2. Return 404 if project is not found
-    // 3. Return a success message as JSON
-    
-    // Example implementation (students should write this):
-    // await prisma.project.delete({
-    //   where: { id: id }
-    // });
-    //
-    // return NextResponse.json({ message: 'Project deleted successfully' });
-
-    return NextResponse.json({ message: `TODO: Implement DELETE /api/projects/${id}` }, { status: 501 });
+    try {
+      // Try to delete the project
+      await prisma.project.delete({
+        where: { id: id }
+      });
+      return NextResponse.json({ message: 'Project deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting project:', error);
+      // Prisma error for not found: P2025
+      if (error instanceof Error && error.message.includes('Record to delete does not exist')) {
+        return NextResponse.json({ error: 'Project not found' }, { status: 404 });
+      }
+      return NextResponse.json({ error: 'Failed to delete project' }, { status: 500 });
+    }
   } catch (error) {
     console.error('Error deleting project:', error);
     return NextResponse.json(
