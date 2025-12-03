@@ -46,32 +46,39 @@ export async function PUT(request, { params }) {
       );
     }
 
-    // TODO: Implement PUT request to update a specific project
-    // Instructions for students:
-    // 1. Parse the request body to get updated project data
-    // 2. Use prisma.project.update() to update the project
-    // 3. Return 404 if project is not found
-    // 4. Return the updated project as JSON
-    
-    // Example implementation (students should write this):
-    // const body = await request.json();
-    // const { title, description, imageUrl, projectUrl, githubUrl, technologies } = body;
-    //
-    // const project = await prisma.project.update({
-    //   where: { id: id },
-    //   data: {
-    //     title,
-    //     description,
-    //     imageUrl,
-    //     projectUrl,
-    //     githubUrl,
-    //     technologies
-    //   }
-    // });
-    //
-    // return NextResponse.json(project);
-
-    return NextResponse.json({ message: `TODO: Implement PUT /api/projects/${id}` }, { status: 501 });
+    const body = await request.json();
+    const { title, description, imageUrl, projectUrl, githubUrl, technologies } = body;
+    // Validate required fields for update (technologies must be non-empty array)
+    if (!title || !description || !Array.isArray(technologies) || technologies.length === 0) {
+      return NextResponse.json(
+        { error: 'Title, description, and non-empty technologies are required' },
+        { status: 400 }
+      );
+    }
+    try {
+      const project = await prisma.project.update({
+        where: { id: id },
+        data: {
+          title,
+          description,
+          imageUrl,
+          projectUrl,
+          githubUrl,
+          technologies
+        }
+      });
+      return NextResponse.json(project, { status: 200 });
+    } catch (error) {
+      // Prisma error for not found: P2025
+      if (error && typeof error === 'object' && error.code === 'P2025') {
+        return NextResponse.json({ error: 'Project not found' }, { status: 404 });
+      }
+      if (error instanceof Error && error.message.includes('Record to update does not exist')) {
+        return NextResponse.json({ error: 'Project not found' }, { status: 404 });
+      }
+      console.error('Error updating project:', error);
+      return NextResponse.json({ error: 'Failed to update project' }, { status: 500 });
+    }
   } catch (error) {
     console.error('Error updating project:', error);
     return NextResponse.json(

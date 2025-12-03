@@ -22,12 +22,12 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { title, description, projectUrl, githubUrl, technologies } = body;
+    const { title, description, projectUrl, githubUrl, technologies, imageUrl } = body;
 
     // Validate required fields
-    if (!title || !description || !technologies) {
+    if (!title || !description || !Array.isArray(technologies) || technologies.length === 0) {
       return NextResponse.json(
-        { error: 'Title, description, and technologies are required' },
+        { error: 'Title, description, and non-empty technologies are required' },
         { status: 400 }
       );
     }
@@ -36,8 +36,9 @@ export async function POST(request) {
       data: {
         title,
         description,
-        projectUrl,
-        githubUrl,
+        projectUrl: projectUrl || null,
+        imageUrl: imageUrl || null,
+        githubUrl: githubUrl || null,
         technologies
       }
     });

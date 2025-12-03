@@ -116,8 +116,15 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
       </div>
       <div className="mb-4">
         <label className="block font-semibold mb-1">Image URL</label>
+        <input
+          type="text"
+          className={`w-full border px-3 py-2 rounded ${errors.imageUrl ? "border-red-500" : "border-gray-300"}`}
+          value={imageUrl}
+          onChange={e => setImageUrl(e.target.value)}
+          disabled={loading}
+        />
+        {errors.imageUrl && <p className="text-red-500 text-sm mt-1">{errors.imageUrl}</p>}
       </div>
-        await onSubmit({ title, description, projectUrl, githubUrl, technologies });
       <div className="mb-4">
         <label className="block font-semibold mb-1">Live Demo URL</label>
         <input
