@@ -109,16 +109,14 @@ export async function DELETE(request, { params }) {
 
     try {
       // Try to delete the project
-      const deleted = await prisma.project.delete({
+      await prisma.project.delete({
         where: { id: id }
       });
-      // If delete succeeds, return 200
-      return NextResponse.json({ message: 'Project deleted successfully', project: deleted }, { status: 200 });
+      return NextResponse.json({ message: 'Project deleted successfully' });
     } catch (error) {
       console.error('Error deleting project:', error);
       // Prisma error for not found: P2025
-      if ((error && typeof error === 'object' && error.code === 'P2025') ||
-          (error instanceof Error && error.message.includes('Record to delete does not exist'))) {
+      if (error instanceof Error && error.message.includes('Record to delete does not exist')) {
         return NextResponse.json({ error: 'Project not found' }, { status: 404 });
       }
       return NextResponse.json({ error: 'Failed to delete project' }, { status: 500 });
