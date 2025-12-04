@@ -18,12 +18,12 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
 
   const validate = () => {
     const newErrors = {};
-    if (!title.trim()) newErrors.title = "Project title is required.";
-    if (!description.trim()) newErrors.description = "Description is required.";
-    if (!technologies.length) newErrors.technologies = "Add at least one technology.";
-    if (imageUrl && !urlRegex.test(imageUrl)) newErrors.imageUrl = "Invalid image URL.";
-    if (projectUrl && !urlRegex.test(projectUrl)) newErrors.projectUrl = "Invalid live demo URL.";
-    if (githubUrl && !urlRegex.test(githubUrl)) newErrors.githubUrl = "Invalid GitHub URL.";
+    if (!title.trim()) newErrors.title = "Title is required";
+    if (!description.trim()) newErrors.description = "Description is required";
+    if (!technologies.length) newErrors.technologies = "At least one technology is required";
+    if (imageUrl && !urlRegex.test(imageUrl)) newErrors.imageUrl = "Please enter a valid URL";
+    if (projectUrl && !urlRegex.test(projectUrl)) newErrors.projectUrl = "Please enter a valid URL";
+    if (githubUrl && !urlRegex.test(githubUrl)) newErrors.githubUrl = "Please enter a valid URL";
     return newErrors;
   };
 
@@ -51,6 +51,7 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
 
   return (
     <form className="bg-white rounded-lg shadow-lg p-8 mb-8 animate-slideDown" onSubmit={handleSubmit}>
+      <h2 className="text-2xl font-bold mb-6">Add New Project</h2>
       <div className="mb-4">
         <label className="block font-semibold mb-1">Project Title *</label>
         <input
@@ -121,7 +122,7 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded shadow transition-all disabled:opacity-50"
           disabled={loading}
         >
-          {loading ? "Creating..." : "Create Project"}
+          {loading ? "Creating Project..." : "Create Project"}
         </button>
         <button
           type="button"
