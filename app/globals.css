@@ -1,16 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-red: #C41E3A;
+  --dark-red: #8B1428;
+  --light-red: #E63946;
+  --accent-coral: #FF6B6B;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111827;
+    --foreground: #f3f4f6;
   }
 }
 
@@ -20,8 +22,215 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-red);
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+/* Reusable button styles - use these classes in your JSX */
+.btn-primary {
+  padding: 0.5rem 1.5rem; /* Smaller padding for mobile */
+  background-color: #dc2626;
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+  font-size: 0.875rem; /* Smaller font on mobile */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+.btn-primary:hover {
+  background-color: #b91c1c;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1.5rem; /* Smaller padding for mobile */
+  border: 2px solid #dc2626;
+  color: #dc2626;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  font-size: 0.875rem; /* Smaller font on mobile */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .btn-secondary {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+.btn-secondary:hover {
+  background-color: #dc2626;
+  color: white;
+}
+
+.card {
+  background-color: #030712;
+  border: 1px solid #1f2937;
+  border-radius: 0.75rem;
+  padding: 1rem; /* Less padding on mobile */
+  transition: all 0.3s;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+.card:hover {
+  border-color: #dc2626;
+}
+
+.nav-link {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ef4444;
+}
+
+.section-heading {
+  font-size: 1.75rem; /* Smaller base size for mobile */
+  font-weight: 700;
+  margin-bottom: 2rem; /* Less margin on mobile */
+  text-align: center;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .section-heading {
+    font-size: 2.25rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.skill-badge {
+  padding: 0.5rem 1rem;
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 0.5rem;
+  color: #d1d5db;
+  transition: all 0.3s;
+}
+
+.skill-badge:hover {
+  border-color: #dc2626;
+  color: #ef4444;
+}
+
+.project-card {
+  background-color: #030712;
+  border: 1px solid #1f2937;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.project-card:hover {
+  border-color: #dc2626;
+  box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.2);
+}
+
+.tech-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(220, 38, 38, 0.1);
+  color: #ef4444;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.contact-card {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 0.75rem;
+  padding: 1rem; /* Less padding on mobile */
+  transition: all 0.3s;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .contact-card {
+    padding: 1.5rem;
+  }
+}
+
+.contact-card:hover {
+  border-color: #dc2626;
+}
+
+/* Utility classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Additional responsive utilities */
+.container-responsive {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .container-responsive {
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding: 0 3rem;
+  }
+}
+
+/* Touch-friendly interactive elements */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary,
+  .btn-secondary {
+    min-height: 44px; /* Apple's recommended touch target size */
+  }
+  
+  .nav-link {
+    padding: 0.75rem 0.5rem; /* More touch area */
   }
 }

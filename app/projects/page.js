@@ -73,12 +73,12 @@ export default function Projects() {
   };
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 p-8">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-          <h1 className="text-5xl font-bold">My Projects</h1>
+          <h1 className="text-5xl font-bold text-white">My Projects</h1>
 
           <button
             className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded shadow"
@@ -103,19 +103,19 @@ export default function Projects() {
 
         {/* States: loading, error, projects */}
         {loading ? (
-          <div className="text-center py-12">Loading projects...</div>
+          <div className="text-center py-12 text-gray-300">Loading projects...</div>
         ) : error ? (
-          <div className="text-center py-12 text-red-500">{error}</div>
+          <div className="text-center py-12 text-red-400">{error}</div>
         ) : projects.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow border border-gray-700"
               >
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <h3 className="text-2xl font-bold mb-2 text-white">{project.title}</h3>
+                  <p className="text-gray-300 mb-4 line-clamp-3">
                     {project.description}
                   </p>
 
@@ -124,13 +124,13 @@ export default function Projects() {
                     {(project.technologies || []).slice(0, 3).map((tech, i) => (
                       <span
                         key={i}
-                        className="text-sm bg-gray-200 px-3 py-1 rounded"
+                        className="text-sm bg-gray-700 text-gray-200 px-3 py-1 rounded"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies?.length > 3 && (
-                      <span className="text-sm text-gray-500 px-3 py-1">
+                      <span className="text-sm text-gray-400 px-3 py-1">
                         +{project.technologies.length - 3} more
                       </span>
                     )}
@@ -150,7 +150,7 @@ export default function Projects() {
                         href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+                        className="bg-gray-700 text-gray-200 px-4 py-2 rounded hover:bg-gray-600"
                       >
                         Live Demo
                       </a>
@@ -170,11 +170,11 @@ export default function Projects() {
         ) : (
           // No projects state
           <div className="text-center py-12">
-            <h2 className="text-2xl font-bold mb-4">No projects yet</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">No projects yet</h2>
 
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 max-w-md mx-auto">
-              <h3 className="font-bold text-blue-900 mb-2">🚀 Getting Started:</h3>
-              <ol className="text-blue-800 list-decimal list-inside">
+            <div className="bg-blue-900/50 border-2 border-blue-700 rounded-lg p-6 max-w-md mx-auto">
+              <h3 className="font-bold text-blue-200 mb-2">🚀 Getting Started:</h3>
+              <ol className="text-blue-300 list-decimal list-inside">
                 <li>Create your first project</li>
               </ol>
             </div>
@@ -182,9 +182,9 @@ export default function Projects() {
         )}
 
         {/* Ideas */}
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
-          <h3 className="font-bold text-yellow-900 mb-2">💡 Project Ideas:</h3>
-          <ul className="text-yellow-800 space-y-1">
+        <div className="bg-yellow-900/50 border-2 border-yellow-700 rounded-lg p-6">
+          <h3 className="font-bold text-yellow-200 mb-2">💡 Project Ideas:</h3>
+          <ul className="text-yellow-300 space-y-1">
             <li>• Past school projects</li>
             <li>• Personal coding projects</li>
             <li>• Creative/Design work</li>
