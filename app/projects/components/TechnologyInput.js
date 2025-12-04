@@ -91,7 +91,7 @@ export default function TechnologyInput({ technologies = [], onChange, error }) 
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="Type a technology and press enter"
+          placeholder="Add technology..."
         />
         <button
           type="button"
