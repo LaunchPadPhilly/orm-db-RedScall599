@@ -21,19 +21,19 @@ export default function About() {
             
             {/* About Content */}
             <div className="flex-1">
-              <h2 className="text-3xl font-bold mb-6 text-white">Hello, I'm Jose</h2>
+              <h2 className="text-3xl font-bold mb-6 text-white">Hello, I&apos;m Jose</h2>
               <div className="space-y-4 text-gray-300">
                 <p className="text-lg leading-relaxed">
-                  I'm a passionate Full Stack Developer & Designer who loves creating meaningful digital experiences. 
+                  I&apos;m a passionate Full Stack Developer & Designer who loves creating meaningful digital experiences. 
                   My journey in technology is driven by curiosity and a desire to build solutions that make a real difference.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  When I'm not coding, you'll find me building computers, baking delicious treats, or exploring new 
+                  When I&apos;m not coding, you&apos;ll find me building computers, baking delicious treats, or exploring new 
                   technologies. I believe in the power of clean code and beautiful user experiences to transform ideas into reality.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  I'm always excited to take on new challenges and collaborate on projects that push the boundaries 
-                  of what's possible with modern web technologies.
+                  I&apos;m always excited to take on new challenges and collaborate on projects that push the boundaries 
+                  of what&apos;s possible with modern web technologies.
                 </p>
               </div>
             </div>

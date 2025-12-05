@@ -8,7 +8,7 @@ export default function Contact() {
         
         <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-8 mb-8">
           <p className="text-xl text-gray-300 mb-8 text-center">
-            I'd love to hear from you! Feel free to reach out through any of these channels.
+            I&apos;d love to hear from you! Feel free to reach out through any of these channels.
           </p>
 
           <div className="space-y-8">
@@ -50,7 +50,7 @@ export default function Contact() {
         </div>
 
         <div className="bg-blue-900/50 border-2 border-blue-700 rounded-lg p-6">
-          <h3 className="font-bold text-blue-200 mb-4 text-xl">💡 Let's Collaborate!</h3>
+          <h3 className="font-bold text-blue-200 mb-4 text-xl">💡 Let&apos;s Collaborate!</h3>
           <div className="text-blue-300 space-y-2">
             <p>🚀 Available for freelance projects</p>
             <p>⏰ Typically respond within 24 hours</p>

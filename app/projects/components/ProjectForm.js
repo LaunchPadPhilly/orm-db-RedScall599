@@ -53,8 +53,9 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
     <form className="bg-white rounded-lg shadow-lg p-8 mb-8 animate-slideDown" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-bold mb-6">Add New Project</h2>
       <div className="mb-4">
-        <label className="block font-semibold mb-1">Project Title *</label>
+        <label htmlFor="project-title" className="block font-semibold mb-1">Project Title *</label>
         <input
+          id="project-title"
           type="text"
           className={`w-full border px-3 py-2 rounded ${errors.title ? "border-red-500" : "border-gray-300"}`}
           value={title}
@@ -64,8 +65,9 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
         {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
       </div>
       <div className="mb-4">
-        <label className="block font-semibold mb-1">Description *</label>
+        <label htmlFor="project-description" className="block font-semibold mb-1">Description *</label>
         <textarea
+          id="project-description"
           className={`w-full border px-3 py-2 rounded ${errors.description ? "border-red-500" : "border-gray-300"}`}
           value={description}
           onChange={e => setDescription(e.target.value)}
@@ -74,17 +76,19 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
         {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
       </div>
       <div className="mb-4">
-        <label className="block font-semibold mb-1">Technologies Used *</label>
+        <label htmlFor="project-technologies" className="block font-semibold mb-1">Technologies Used *</label>
         <TechnologyInput
           technologies={technologies}
           onChange={setTechnologies}
           error={errors.technologies}
+          inputId="project-technologies"
         />
         {errors.technologies && <p className="text-red-500 text-sm mt-1">{errors.technologies}</p>}
       </div>
       <div className="mb-4">
-        <label className="block font-semibold mb-1">Image URL</label>
+        <label htmlFor="project-image-url" className="block font-semibold mb-1">Image URL</label>
         <input
+          id="project-image-url"
           type="text"
           className={`w-full border px-3 py-2 rounded ${errors.imageUrl ? "border-red-500" : "border-gray-300"}`}
           value={imageUrl}
@@ -94,8 +98,9 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
         {errors.imageUrl && <p className="text-red-500 text-sm mt-1">{errors.imageUrl}</p>}
       </div>
       <div className="mb-4">
-        <label className="block font-semibold mb-1">Live Demo URL</label>
+        <label htmlFor="project-demo-url" className="block font-semibold mb-1">Live Demo URL</label>
         <input
+          id="project-demo-url"
           type="text"
           className={`w-full border px-3 py-2 rounded ${errors.projectUrl ? "border-red-500" : "border-gray-300"}`}
           value={projectUrl}
@@ -105,8 +110,9 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
         {errors.projectUrl && <p className="text-red-500 text-sm mt-1">{errors.projectUrl}</p>}
       </div>
       <div className="mb-4">
-        <label className="block font-semibold mb-1">GitHub URL</label>
+        <label htmlFor="project-github-url" className="block font-semibold mb-1">GitHub URL</label>
         <input
+          id="project-github-url"
           type="text"
           className={`w-full border px-3 py-2 rounded ${errors.githubUrl ? "border-red-500" : "border-gray-300"}`}
           value={githubUrl}
